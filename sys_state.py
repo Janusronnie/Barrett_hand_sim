@@ -3,6 +3,7 @@ import pybullet as p
 import time
 import pybullet_data
 import numpy as np
+from cal_dist_sdf import cal_dist
 
 
 def transform_matrix(trans=[0, 0, 0], rot=[0, 0, 0]):
@@ -131,7 +132,9 @@ class system_state:
         F1_Link1_2 = transform_matrix(trans=[0.5 * self.D3, 0, 0])
         F1_Link2_3 = transform_matrix(trans=[0, self.A1, 0], rot=[0, 0, self.finger1_prox])
         F1_Link3_4 = transform_matrix(trans=[0, 0.5 * self.A2, self.D3], rot=[self.finger1_med, 0, 0])
+        F1_Link3_med = transform_matrix(trans=[0, 0.5 * self.A2, 0], rot=[self.finger1_med, 0, 0])
 
+        finger1_med_start = F1_Link0_1 @ F1_Link1_2 @ F1_Link2_3 @ F1_Link3_med
         finger1_med_mtx = F1_Link0_1 @ F1_Link1_2 @ F1_Link2_3 @ F1_Link3_4
 
         F1_Link3_5 = transform_matrix(trans=[0, self.A2, 0], rot=[self.finger1_med, 0, 0])
@@ -139,16 +142,19 @@ class system_state:
                                           0.5 * self.A3 * np.sin(42 / 180 * np.pi)], rot=[self.finger1_dist, 0, 0])
         F1_Link6_7 = transform_matrix(trans=[0, - self.D3 * np.sin(42 / 180 * np.pi), self.D3 * np.cos(42 / 180 * np.pi)])
 
+        finger1_dist_start = F1_Link0_1 @ F1_Link1_2 @ F1_Link2_3 @ F1_Link3_5 @ F1_Link5_6
         finger1_dist_mtx = F1_Link0_1 @ F1_Link1_2 @ F1_Link2_3 @ F1_Link3_5 @ F1_Link5_6 @ F1_Link6_7
 
-        return finger1_med_mtx, finger1_dist_mtx
+        return finger1_med_mtx, finger1_dist_mtx, finger1_med_start, finger1_dist_start
 
     def finger2_contact_matrix(self):
         F2_Link0_1 = transform_matrix(trans=[0, 0, self.Dw])
         F2_Link1_2 = transform_matrix(trans=[- 0.5 * self.D3, 0, 0])
         F2_Link2_3 = transform_matrix(trans=[0, self.A1, 0], rot=[0, 0, self.finger2_prox])
         F2_Link3_4 = transform_matrix(trans=[0, 0.5 * self.A2, self.D3], rot=[self.finger2_med, 0, 0])
+        F2_Link3_med = transform_matrix(trans=[0, 0.5 * self.A2, 0], rot=[self.finger1_med, 0, 0])
 
+        finger2_med_start = F2_Link0_1 @ F2_Link1_2 @ F2_Link2_3 @ F2_Link3_med
         finger2_med_mtx = F2_Link0_1 @ F2_Link1_2 @ F2_Link2_3 @ F2_Link3_4
 
         F2_Link3_5 = transform_matrix(trans=[0, self.A2, 0], rot=[self.finger2_med, 0, 0])
@@ -156,15 +162,18 @@ class system_state:
                                           0.5 * self.A3 * np.sin(42 / 180 * np.pi)], rot=[self.finger2_dist, 0, 0])
         F2_Link6_7 = transform_matrix(trans=[0, - self.D3 * np.sin(42 / 180 * np.pi), self.D3 * np.cos(42 / 180 * np.pi)])
 
+        finger2_dist_start = F2_Link0_1 @ F2_Link1_2 @ F2_Link2_3 @ F2_Link3_5 @ F2_Link5_6
         finger2_dist_mtx = F2_Link0_1 @ F2_Link1_2 @ F2_Link2_3 @ F2_Link3_5 @ F2_Link5_6 @ F2_Link6_7
 
-        return finger2_med_mtx, finger2_dist_mtx
+        return finger2_med_mtx, finger2_dist_mtx, finger2_med_start, finger2_dist_start
 
     def finger3_contact_matrix(self):
         F3_Link0_1 = transform_matrix(trans=[0, 0, self.Dw])
         F3_Link1_2 = transform_matrix(trans=[0, -self.A1, 0])
         F3_Link2_3 = transform_matrix(trans=[0, -0.5 * self.A2, self.D3], rot=[self.finger3_med, 0, 0])
+        F3_Link2_med = transform_matrix(trans=[0, -0.5 * self.A2, 0], rot=[self.finger3_med, 0, 0])
 
+        finger3_med_start = F3_Link0_1 @ F3_Link1_2 @ F3_Link2_med
         finger3_med_mtx = F3_Link0_1 @ F3_Link1_2 @ F3_Link2_3
 
         F3_Link2_4 = transform_matrix(trans=[0, -self.A2, 0], rot=[self.finger3_med, 0, 0])
@@ -172,11 +181,12 @@ class system_state:
                                           0.5 * self.A3 * np.sin(42 / 180 * np.pi)], rot=[self.finger3_dist, 0, 0])
         F3_Link5_6 = transform_matrix(trans=[0, self.D3 * np.sin(42 / 180 * np.pi), self.D3 * np.cos(42 / 180 * np.pi)])
 
+        finger3_dist_start = F3_Link0_1 @ F3_Link1_2 @ F3_Link2_4 @ F3_Link4_5
         finger3_dist_mtx = F3_Link0_1 @ F3_Link1_2 @ F3_Link2_4 @ F3_Link4_5 @ F3_Link5_6
 
-        return finger3_med_mtx, finger3_dist_mtx
+        return finger3_med_mtx, finger3_dist_mtx, finger3_med_start, finger3_dist_start
 
-    def contact_pts(self):
+    def contact_pts_and_n_vector(self):
         trans_mtx_hand_to_world = transform_matrix(trans=self.base_pos, rot=self.base_ori)
         base = np.ones([4, 1])
         base[0, 0] = self.base_pos[0]
@@ -193,19 +203,51 @@ class system_state:
 
         contact_pts = {'palm_p': palm_c, 'finger1_med_p': finger1_med_c, 'finger1_dist_p': finger1_dist_c,
                            'finger2_med_p': finger2_med_c, 'finger2_dist_p': finger2_dist_c,
-                           'finger3_med_p': finger3_med_c, 'finger3_dist_p': finger3_dist_c,}
+                           'finger3_med_p': finger3_med_c, 'finger3_dist_p': finger3_dist_c}
 
-        return contact_pts
+        palm_n_start_pts = base[:3, 0]
+        finger1_med_n_start_pts = (trans_mtx_hand_to_world @ self.finger1_contact_matrix()[2] @ base)[:3, 0]
+        finger1_dist_n_start_pts = (trans_mtx_hand_to_world @ self.finger1_contact_matrix()[3] @ base)[:3, 0]
+        finger2_med_n_start_pts = (trans_mtx_hand_to_world @ self.finger2_contact_matrix()[2] @ base)[:3, 0]
+        finger2_dist_n_start_pts = (trans_mtx_hand_to_world @ self.finger2_contact_matrix()[3] @ base)[:3, 0]
+        finger3_med_n_start_pts = (trans_mtx_hand_to_world @ self.finger3_contact_matrix()[2] @ base)[:3, 0]
+        finger3_dist_n_start_pts = (trans_mtx_hand_to_world @ self.finger3_contact_matrix()[3] @ base)[:3, 0]
+
+        palm_n = list(np.array(palm_c) - palm_n_start_pts)
+        finger1_med_n = list(np.array(finger1_med_c) - finger1_med_n_start_pts)
+        finger1_dist_n = list(np.array(finger1_dist_c) - finger1_dist_n_start_pts)
+        finger2_med_n = list(np.array(finger2_med_c) - finger2_med_n_start_pts)
+        finger2_dist_n = list(np.array(finger2_dist_c) - finger2_dist_n_start_pts)
+        finger3_med_n = list(np.array(finger3_med_c) - finger3_med_n_start_pts)
+        finger3_dist_n = list(np.array(finger3_dist_c) - finger3_dist_n_start_pts)
+
+        contact_n_vector = {'palm_n': palm_n, 'finger1_med_n': finger1_med_n, 'finger1_dist_n': finger1_dist_n,
+                           'finger2_med_n': finger2_med_n, 'finger2_dist_n': finger2_dist_n,
+                           'finger3_med_n': finger3_med_n, 'finger3_dist_n': finger3_dist_n}
+
+        return contact_pts, contact_n_vector
+
+
+def cal_distance(pts):
+    dist = []
+    trans_world_to_object = transform_matrix(trans=[-0.5, -0.5, -0.1])
+    for keys in pts.keys():
+        pts_array = np.ones([4, 1])
+        pts_array[:3, 0] = np.array(pts[keys]).T
+        contact_to_obj_pts = list((trans_world_to_object @ pts_array)[:3, 0])
+        dist.append(cal_dist(point_loc=contact_to_obj_pts))
+    return dist
 
 
 if __name__ == "__main__":
     state = system_state()
     # state.random_state()
-    state.target(pos=[0, 0, 0], ori=[np.pi, 0, 0])
-    connact_pts = state.contact_pts()
-    for keys in connact_pts.keys():
-        print('The location of {0} is {1}'.format(keys, connact_pts[keys]))
-
-    state.simulator()
-
-
+    state.target(pos=[0, 0, 0], ori=[0, 0, 0])
+    contact_pts, contact_n_vector = state.contact_pts_and_n_vector()
+    dist = cal_distance(pts=contact_pts)
+    # for keys in contact_pts.keys():
+    #     print('The location of {0} is {1}'.format(keys, contact_pts[keys]))
+    # print('\n')
+    # for keys in contact_n_vector.keys():
+    #     print('The normal vector of {0} is {1}'.format(keys, contact_n_vector[keys]))
+    # state.simulator()
