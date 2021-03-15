@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="BarrettHand-280">
+
+  <link name="base_link">
+    <inertial>
+      <origin
+        xyz="-1.53444458471812E-05 -0.00277693650469599 0.0352882288900349"
+        rpy="0 0 0" />
+      <mass
+        value="0.37796637904835" />
+      <inertia
+        ixx="0.000427326369503117"
+        ixy="-2.6443308211041E-07"
+        ixz="2.02907486148204E-07"
+        iyy="0.000361316173022239"
+        iyz="3.07926859199233E-05"
+        izz="0.000376798127757583" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BarrettHand-280.SLDASM/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BarrettHand-280.SLDASM/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="finger_1_prox_joint"
+    type="revolute">
+    <origin
+      xyz="0.025 0 0.0415000000000004"
+      rpy="3.14159265358979 0 1.5707963267949" />
+    <parent
+      link="base_link" />
+    <child
+      link="finger_1_prox_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="3.14"
+      effort="0"
+      velocity="0.001" />
+  </joint>
+
+  <link name="finger_1_prox_link">
+    <inertial>
+      <origin
+        xyz="0.0288648917008987 9.98379746692118E-05 -0.0171253477569802"
+        rpy="0 0 0" />
+      <mass
+        value="56143.0626955765" />
+      <inertia
+        ixx="10.4484040652085"
+        ixy="-0.117861448219975"
+        ixz="5.31613760585343"
+        iyy="33.9552353012776"
+        iyz="0.0780041192837709"
+        izz="29.3669090518615" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BarrettHand-280.SLDASM/meshes/finger_1_prox_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BarrettHand-280.SLDASM/meshes/finger_1_prox_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+
+  <link
+    name="finger_1_med_liink">
+    <inertial>
+      <origin
+        xyz="0.030918176135544 0.00196930249325443 -0.000743369842666076"
+        rpy="0 0 0" />
+      <mass
+        value="31321.1214212939" />
+      <inertia
+        ixx="2.18512832127284"
+        ixy="-0.844484268309696"
+        ixz="-0.0135401272401388"
+        iyy="17.3596441998536"
+        iyz="-0.00112669216751947"
+        izz="17.7656644395659" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BarrettHand-280.SLDASM/meshes/finger_1_med_liink.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BarrettHand-280.SLDASM/meshes/finger_1_med_liink.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="finger_1_med_joint"
+    type="revolute">
+    <origin
+      xyz="0.05 0 -0.0339"
+      rpy="-1.5707963267949 0 0" />
+    <parent
+      link="finger_1_prox_link" />
+    <child
+      link="finger_1_med_liink" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="2.442"
+      effort="0"
+      velocity="0.001" />
+  </joint>
+
+  <link
+    name="finger_1_dist_link">
+    <inertial>
+      <origin
+        xyz="0.0183314958539984 0.0175633699810199 -0.000497127764360405"
+        rpy="0 0 0" />
+      <mass
+        value="19342.3313676742" />
+      <inertia
+        ixx="3.6746611256125"
+        ixy="-2.57800680729493"
+        ixz="0.0345727627030951"
+        iyy="4.08727013390303"
+        iyz="0.0329223458041859"
+        izz="5.9939538795115" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BarrettHand-280.SLDASM/meshes/finger_1_dist_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BarrettHand-280.SLDASM/meshes/finger_1_dist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="finger_1_dist_joint"
+    type="revolute">
+    <origin
+      xyz="0.0699356847396234 0.003 0"
+      rpy="0 0 0" />
+    <parent
+      link="finger_1_med_liink" />
+    <child
+      link="finger_1_dist_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0.8373"
+      effort="0"
+      velocity="0.001" />
+  </joint>
+
+  <link
+    name="finger_2_prox_link">
+    <inertial>
+      <origin
+        xyz="0.0288648917008987 -9.98379746692153E-05 0.0171253477569802"
+        rpy="0 0 0" />
+      <mass
+        value="56143.0626955765" />
+      <inertia
+        ixx="10.4484040652085"
+        ixy="0.117861448219975"
+        ixz="-5.31613760585343"
+        iyy="33.9552353012776"
+        iyz="0.0780041192837699"
+        izz="29.3669090518615" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BarrettHand-280.SLDASM/meshes/finger_2_prox_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BarrettHand-280.SLDASM/meshes/finger_2_prox_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="finger_2_prox_joint"
+    type="revolute">
+    <origin
+      xyz="-0.025 0 0.0415000000000004"
+      rpy="0 0 1.5707963267949" />
+    <parent
+      link="base_link" />
+    <child
+      link="finger_2_prox_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="0"
+      effort="1"
+      velocity="0.001" />
+  </joint>
+
+  <link
+    name="finger_2_med_link">
+    <inertial>
+      <origin
+        xyz="0.0309061378225848 0.00214997948654991 -0.000743369814045599"
+        rpy="0 0 0" />
+      <mass
+        value="31321.1215499126" />
+      <inertia
+        ixx="2.19551825824831"
+        ixy="-0.933117181988174"
+        ixz="-0.0135333166873643"
+        iyy="17.3492542935561"
+        iyz="-0.00120585854514776"
+        izz="17.7656644132238" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BarrettHand-280.SLDASM/meshes/finger_2_med_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BarrettHand-280.SLDASM/meshes/finger_2_med_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="finger_2_med_joint"
+    type="revolute">
+    <origin
+      xyz="0.05 0 0.0339"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="finger_2_prox_link" />
+    <child
+      link="finger_2_med_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="2.442"
+      effort="0"
+      velocity="0.001" />
+  </joint>
+
+  <link
+    name="finger_2_dist_link">
+    <inertial>
+      <origin
+        xyz="0.0181940670014982 0.0177056949358594 -0.00049712776428296"
+        rpy="0 0 0" />
+      <mass
+        value="19342.3314711351" />
+      <inertia
+        ixx="3.71486606059011"
+        ixy="-2.58090906864381"
+        ixz="0.0343151438112268"
+        iyy="4.04706523231237"
+        iyz="0.033190779182162"
+        izz="5.99395392015211" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BarrettHand-280.SLDASM/meshes/finger_2_dist_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BarrettHand-280.SLDASM/meshes/finger_2_dist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="finger_2_dist_joint"
+    type="revolute">
+    <origin
+      xyz="0.0699169557175366 0.00340870990147102 0"
+      rpy="0 0 0" />
+    <parent
+      link="finger_2_med_link" />
+    <child
+      link="finger_2_dist_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0.8373"
+      effort="0"
+      velocity="0.001" />
+  </joint>
+
+  <link
+    name="finger_3_med_link">
+    <inertial>
+      <origin
+        xyz="0.0309181761355441 0.00196930249325443 -0.000743369842666415"
+        rpy="0 0 0" />
+      <mass
+        value="31321.121421294" />
+      <inertia
+        ixx="2.18512832127284"
+        ixy="-0.844484268309697"
+        ixz="-0.0135401272400822"
+        iyy="17.3596441998537"
+        iyz="-0.00112669216751505"
+        izz="17.7656644395659" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BarrettHand-280.SLDASM/meshes/finger_3_med_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BarrettHand-280.SLDASM/meshes/finger_3_med_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="finger_3_med_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.05 0.0754000000000003"
+      rpy="1.5707963267949 0 -1.5707963267949" />
+    <parent
+      link="base_link" />
+    <child
+      link="finger_3_med_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-2.442"
+      upper="0"
+      effort="0"
+      velocity="0.001" />
+  </joint>
+
+  <link
+    name="finger_3_dist_link">
+    <inertial>
+      <origin
+        xyz="0.0183314958544332 0.0175633699805676 -0.000497127764368882"
+        rpy="0 0 0" />
+      <mass
+        value="19342.3313676742" />
+      <inertia
+        ixx="3.67466112548529"
+        ixy="-2.57800680728476"
+        ixz="0.0345727627040426"
+        iyy="4.08727013403026"
+        iyz="0.0329223458034849"
+        izz="5.9939538795115" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BarrettHand-280.SLDASM/meshes/finger_3_dist_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://BarrettHand-280.SLDASM/meshes/finger_3_dist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="finger_3_dist_joint"
+    type="revolute">
+    <origin
+      xyz="0.0699356847396236 0.00300000000000011 0"
+      rpy="0 0 0" />
+    <parent
+      link="finger_3_med_link" />
+    <child
+      link="finger_3_dist_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0.8373"
+      effort="0"
+      velocity="0.001" />
+  </joint>
+
+
+
+  <joint name="joint_base_c"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="contact_point_base" />
+  </joint>
+
+  <link name="contact_point_base">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.08"/>
+      <geometry>
+        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+      </geometry>
+       <material name="yellow">
+        <color rgba="1 1 0.4 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.08"/>
+      <geometry>
+        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+  <joint name="joint_f1_med_c"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="finger_1_med_liink" />
+    <child
+      link="contact_point_f1_med" />
+  </joint>
+
+  <link name="contact_point_f1_med">
+    <visual>
+      <origin rpy="0 0 0" xyz="0.04 0.014 0"/>
+      <geometry>
+        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+      </geometry>
+       <material name="yellow">
+        <color rgba="1 1 0.4 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.04 0.014 0"/>
+      <geometry>
+        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+  <joint name="joint_f1_dist_c"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="finger_1_dist_link" />
+    <child
+      link="contact_point_f1_dist" />
+  </joint>
+
+  <link name="contact_point_f1_dist">
+    <visual>
+      <origin rpy="0 0 0.733" xyz="0.03 0.035 0"/>
+      <geometry>
+        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+      </geometry>
+       <material name="yellow">
+        <color rgba="1 1 0.4 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0.733" xyz="0.03 0.035 0"/>
+      <geometry>
+        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+  <joint name="joint_f2_med_c"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="finger_2_med_link" />
+    <child
+      link="contact_point_f2_med" />
+  </joint>
+
+  <link name="contact_point_f2_med">
+    <visual>
+      <origin rpy="0 0 0" xyz="0.04 0.014 0"/>
+      <geometry>
+        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+      </geometry>
+       <material name="yellow">
+        <color rgba="1 1 0.4 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.04 0.014 0"/>
+      <geometry>
+        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+  <joint name="joint_f2_dist_c"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="finger_2_dist_link" />
+    <child
+      link="contact_point_f2_dist" />
+  </joint>
+
+  <link name="contact_point_f2_dist">
+    <visual>
+      <origin rpy="0 0 0.733" xyz="0.03 0.035 0"/>
+      <geometry>
+        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+      </geometry>
+       <material name="yellow">
+        <color rgba="1 1 0.4 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0.733" xyz="0.03 0.035 0"/>
+      <geometry>
+        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+  <joint name="joint_f3_med_c"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="finger_3_med_link" />
+    <child
+      link="contact_point_f3_med" />
+  </joint>
+
+  <link name="contact_point_f3_med">
+    <visual>
+      <origin rpy="0 0 0" xyz="0.04 0.014 0"/>
+      <geometry>
+        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+      </geometry>
+       <material name="yellow">
+        <color rgba="1 1 0.4 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.04 0.014 0"/>
+      <geometry>
+        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+  <joint name="joint_f3_dist_c"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="finger_3_dist_link" />
+    <child
+      link="contact_point_f3_dist" />
+  </joint>
+
+  <link name="contact_point_f3_dist">
+    <visual>
+      <origin rpy="0 0 0.733" xyz="0.03 0.035 0"/>
+      <geometry>
+        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+      </geometry>
+       <material name="yellow">
+        <color rgba="1 1 0.4 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0.733" xyz="0.03 0.035 0"/>
+      <geometry>
+        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+
+</robot>
