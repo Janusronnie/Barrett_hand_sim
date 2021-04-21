@@ -539,10 +539,10 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0.08"/>
       <geometry>
-        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+        <mesh filename="/urdf_model/contact point.obj" scale="1 1 1"/>
       </geometry>
-       <material name="yellow">
-        <color rgba="1 1 0.4 1"/>
+       <material name="red">
+        <color rgba="1 0 0 1"/>
       </material>
     </visual>
     <collision>
@@ -572,16 +572,16 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.04 0.014 0"/>
       <geometry>
-        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+        <mesh filename="/urdf_model/contact point.obj" scale="1 1 1"/>
       </geometry>
-       <material name="yellow">
-        <color rgba="1 1 0.4 1"/>
+       <material name="red">
+        <color rgba="1 0 0 1"/>
       </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.04 0.014 0"/>
       <geometry>
-        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+        <mesh filename="/urdf_model/contact point.obj" scale="1 1 1"/>
       </geometry>
     </collision>
     <inertial>
@@ -603,18 +603,18 @@
 
   <link name="contact_point_f1_dist">
     <visual>
-      <origin rpy="0 0 0.733" xyz="0.03 0.035 0"/>
+      <origin rpy="0 0 0.733" xyz="0.015 0.025 0"/>
       <geometry>
-        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+        <mesh filename="/urdf_model/contact point.obj" scale="1 1 1"/>
       </geometry>
-       <material name="yellow">
-        <color rgba="1 1 0.4 1"/>
+       <material name="red">
+        <color rgba="1 0 0 1"/>
       </material>
     </visual>
     <collision>
-      <origin rpy="0 0 0.733" xyz="0.03 0.035 0"/>
+      <origin rpy="0 0 0.733" xyz="0.015 0.025 0"/>
       <geometry>
-        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+        <mesh filename="/urdf_model/contact point.obj" scale="1 1 1"/>
       </geometry>
     </collision>
     <inertial>
@@ -638,16 +638,16 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.04 0.014 0"/>
       <geometry>
-        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+        <mesh filename="/urdf_model/contact point.obj" scale="1 1 1"/>
       </geometry>
-       <material name="yellow">
-        <color rgba="1 1 0.4 1"/>
+       <material name="red">
+        <color rgba="1 0 0 1"/>
       </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.04 0.014 0"/>
       <geometry>
-        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+        <mesh filename="/urdf_model/contact point.obj" scale="1 1 1"/>
       </geometry>
     </collision>
     <inertial>
@@ -669,18 +669,18 @@
 
   <link name="contact_point_f2_dist">
     <visual>
-      <origin rpy="0 0 0.733" xyz="0.03 0.035 0"/>
+      <origin rpy="0 0 0.733" xyz="0.015 0.025 0"/>
       <geometry>
-        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+        <mesh filename="/urdf_model/contact point.obj" scale="1 1 1"/>
       </geometry>
-       <material name="yellow">
-        <color rgba="1 1 0.4 1"/>
+       <material name="red">
+        <color rgba="1 0 0 1"/>
       </material>
     </visual>
     <collision>
-      <origin rpy="0 0 0.733" xyz="0.03 0.035 0"/>
+      <origin rpy="0 0 0.733" xyz="0.015 0.025 0"/>
       <geometry>
-        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+        <mesh filename="/urdf_model/contact point.obj" scale="1 1 1"/>
       </geometry>
     </collision>
     <inertial>
@@ -704,16 +704,16 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.04 0.014 0"/>
       <geometry>
-        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+        <mesh filename="/urdf_model/contact point.obj" scale="1 1 1"/>
       </geometry>
-       <material name="yellow">
-        <color rgba="1 1 0.4 1"/>
+       <material name="red">
+        <color rgba="1 0 0 1"/>
       </material>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.04 0.014 0"/>
       <geometry>
-        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+        <mesh filename="/urdf_model/contact point.obj" scale="1 1 1"/>
       </geometry>
     </collision>
     <inertial>
@@ -735,18 +735,18 @@
 
   <link name="contact_point_f3_dist">
     <visual>
-      <origin rpy="0 0 0.733" xyz="0.03 0.035 0"/>
+      <origin rpy="0 0 0.733" xyz="0.015 0.025 0"/>
       <geometry>
-        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+        <mesh filename="/urdf_model/contact point.obj" scale="1 1 1"/>
       </geometry>
-       <material name="yellow">
-        <color rgba="1 1 0.4 1"/>
+       <material name="red">
+        <color rgba="1 0 0 1"/>
       </material>
     </visual>
     <collision>
-      <origin rpy="0 0 0.733" xyz="0.03 0.035 0"/>
+      <origin rpy="0 0 0.733" xyz="0.015 0.025 0"/>
       <geometry>
-        <mesh filename="/urdf_model/small_cube.obj" scale="1 1 1"/>
+        <mesh filename="/urdf_model/contact point.obj" scale="1 1 1"/>
       </geometry>
     </collision>
     <inertial>
